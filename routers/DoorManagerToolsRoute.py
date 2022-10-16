@@ -1,9 +1,9 @@
 #-*- coding=utf-8 -*-
 from flask import render_template, request, session, jsonify
 from config import config
-from views.doormanagertools_view import version_view,dooropen_view
+from views.DoorManagerToolsView import version_view,dooropen_view
 
-ROUTER_PREFIX = config.App.ROUTE_PREFIX
+ROUTER_PREFIX = config.AppConfig.ROUTE_PREFIX
 
 class Route:
 

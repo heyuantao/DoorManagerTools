@@ -1,1 +1,1 @@
-from .desig_pattern import Singleton
+from .DesignPattern import Singleton

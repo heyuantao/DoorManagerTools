@@ -1,6 +1,6 @@
 #-*- coding: UTF-8 -*-
 
-from data.CallBackExampleData import call_back_str_array
+from data.MegviiDoorManagerCallBackExampleData import call_back_str_array
 import json
 
 class DoorManagerRecordParser:

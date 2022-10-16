@@ -1,1 +1,1 @@
-from .doormanagertools_route import Route as DoorManagerRouter
+from .DoorManagerToolsRoute import Route as DoorManagerRouter

@@ -10,8 +10,9 @@ import logging
 logger = logging.getLogger(__name__)
 
 def create_app():
-    app = Flask(__name__,static_folder=config.App.STATIC_FOLDER, template_folder=config.App.TEMPLATE_FOLDER)
+    app = Flask(__name__,static_folder=config.AppConfig.STATIC_FOLDER, template_folder=config.AppConfig.TEMPLATE_FOLDER)
     app.config.from_object(config)
+    print(app.config)
     CORS(app)
     #app.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RR'
 
@@ -26,7 +27,7 @@ def create_app():
 
     return app
 
-WSGIRequestHandler.protocol_version = "HTTP/1.1"
+#WSGIRequestHandler.protocol_version = "HTTP/1.1"
 application = create_app()
 
 if __name__ == '__main__':
