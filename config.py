@@ -14,7 +14,7 @@ class AppConfigSettings:
     AUTH_TOKEN = [os.getenv('TOKEN',default="123456"),]  #可以设置多个token,可以设置并修改
     #CELERY_BACKEND = "redis://127.0.0.1:6379/1"
     JSON_AS_ASCII = False
-    DEBUG = False
+    DEBUG = True
 
 @Singleton
 class Config:

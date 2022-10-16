@@ -14,11 +14,15 @@ def create_app():
     app.config.from_object(config)
     print(app.config)
     CORS(app)
-    #app.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RR'
 
     from routers import DoorManagerRouter
     route_instance = DoorManagerRouter()
     route_instance.init_app(app)
+
+    from db import Database
+    redis_instance = Database()
+    redis_instance.init_app(app)
+
 
     # 从gunicorn获得loglevel等级，并将其设置到app中
     gunicorn_logger = logging.getLogger("gunicorn.error")
@@ -31,5 +35,5 @@ def create_app():
 application = create_app()
 
 if __name__ == '__main__':
-    #logging.basicConfig(level=logging.DEBUG)
+    logging.basicConfig(level=logging.DEBUG)
     application.run(port=5001,host="0.0.0.0")
