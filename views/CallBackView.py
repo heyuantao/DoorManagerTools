@@ -12,9 +12,11 @@ import traceback
 from config import config
 import mimetypes
 import json
+from db import Database
 import logging
 
 logger = logging.getLogger(__name__)
+db = Database()
 
 def dooropenevent_callback_view(request):
     parse = DoorManagerRecordParser
@@ -23,10 +25,18 @@ def dooropenevent_callback_view(request):
 
     #print("发生开门事件在{},记录编号为{}".format(parse.time(dict_item), parse.uuid(dict_item)))
     if parse.isUser(dict_item):
-        print("教师 {} 打开了 {}".format(parse.name(dict_item), parse.location(dict_item)))
-    if parse.isGuest(dict_item):
-        print("{} 设置的访客 {} 打开了 {}".format(parse.visitedName(dict_item),
-                                          parse.name(dict_item),
-                                          parse.location(dict_item)))
+        #print("教师 {} 打开了 {}".format(parse.name(dict_item), parse.location(dict_item)))
+        item={"id": parse.uuid(dict_item),"name":parse.name(dict_item),"location":parse.location(dict_item),"type":"user",\
+              "timestamp":parse.timestamp(dict_item)}
+        db.add_success_open_record(json.dumps(item))
+    elif parse.isGuest(dict_item):
+        #print("{} 设置的访客 {} 打开了 {}".format(parse.visitedName(dict_item),parse.name(dict_item),parse.location(dict_item)))
+        item = {"id": parse.uuid(dict_item),"name": parse.name(dict_item), "location": parse.location(dict_item), "type": "guest",\
+                "timestamp":parse.timestamp(dict_item),"visited":parse.visitedName(dict_item)}
+        db.add_success_open_record(json.dumps(item))
+    else:
+        item={"id": parse.uuid(dict_item),"location":parse.location(dict_item),\
+              "timestamp":parse.timestamp(dict_item)}
+        db.add_failure_open_record(json.dumps(item))
 
     return jsonify({'status':"ok"})

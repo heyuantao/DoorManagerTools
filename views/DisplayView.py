@@ -10,21 +10,21 @@ import re
 from datetime import datetime,timedelta
 import traceback
 from config import config
+from db import Database
 import mimetypes
 import json
 import logging
 
 logger = logging.getLogger(__name__)
+db = Database()
 
 def version_view(request):
-    print("software version request !")
-    print("request:")
-    print(request.args)
+    #print(request.args)
     return jsonify({'version':"1.0.0"})
 
 
 def sucess_door_open_view(request):
-    pass
+    record_list = db.get_all_success_record()
 
 def failure_door_open_view(request):
-    pass
+    record_list = db.get_all_failure_record()

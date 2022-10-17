@@ -15,7 +15,7 @@ logger = logging.getLogger(__name__)
 #使用redis来存放各类数据
 @Singleton
 class Database:
-    def __init__(self, host='127.0.0.1', port=6379 , db=0):
+    def __init__(self, host='172.16.5.42', port=6379 , db=0):
         self.host = host
         self.port = port
         self.db = db
@@ -56,3 +56,11 @@ class Database:
         failure_list_key = self.open_failure_list_key
         self.connection.ltrim(success_list_key,0,self.max_list_size)
         self.connection.ltrim(failure_list_key, 0, self.max_list_size)
+
+    def get_all_success_record(self):
+        list_key = self.open_success_list_key
+        return self.connection.lrange(list_key,0,self.max_list_size)
+
+    def get_all_failure_record(self):
+        list_key = self.open_failure_list_key
+        return self.connection.lrange(list_key, 0, self.max_list_size)
