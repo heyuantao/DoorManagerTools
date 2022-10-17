@@ -6,6 +6,7 @@ import logging
 logger = logging.getLogger(__name__)
 
 class RedisConfigSettings:
+    HOST = "172.16.5.42"
     MAX_RECORD_SIZE = 1000 #保存在redis中的最大记录长度
 
 class AppConfigSettings:
@@ -16,7 +17,10 @@ class AppConfigSettings:
     TEMPLATE_FOLDER = "./templates"  # not end with slash
     AUTH_TOKEN = [os.getenv('TOKEN',default="123456"),]  #可以设置多个token,可以设置并修改
     #CELERY_BACKEND = "redis://127.0.0.1:6379/1"
+    #接口中文字符的设置
     JSON_AS_ASCII = False
+    JSONIFY_MIMETYPE= "application/json;charset=utf-8"
+    #调试模式
     DEBUG = True
 
 @Singleton

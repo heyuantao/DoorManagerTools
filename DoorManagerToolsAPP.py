@@ -11,7 +11,7 @@ logger = logging.getLogger(__name__)
 
 def create_app():
     app = Flask(__name__,static_folder=config.AppConfig.STATIC_FOLDER, template_folder=config.AppConfig.TEMPLATE_FOLDER)
-    app.config.from_object(config)
+    app.config.from_object(config.AppConfig)
     print(app.config)
     CORS(app)
 
