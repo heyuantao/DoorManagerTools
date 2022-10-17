@@ -20,7 +20,11 @@ db = Database()
 
 def version_view(request):
     #print(request.args)
-    return jsonify({'version':"1.0.0"})
+    return jsonify({"version":"1.0.0",\
+                    "callback":"/api/callback/dooropenevent/",\
+                    "success":"/api/success/",
+                    "failure":"/api/failure/"
+                    })
 
 
 def sucess_door_open_view(request):
