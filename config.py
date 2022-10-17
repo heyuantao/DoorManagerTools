@@ -5,6 +5,9 @@ import logging
 
 logger = logging.getLogger(__name__)
 
+class RedisConfigSettings:
+    MAX_RECORD_SIZE = 1000 #保存在redis中的最大记录长度
+
 class AppConfigSettings:
     ROUTE_PREFIX = "" # 为路由的前缀，如果与其他网站共享一个ip且通过nginx反向代理转发时使用，默认为空。样式为 "/site_url_prefix" or ""
     SITE_URL = "http://127.0.0.1:5000"
@@ -19,6 +22,7 @@ class AppConfigSettings:
 @Singleton
 class Config:
     AppConfig = AppConfigSettings()
+    DBConfig = RedisConfigSettings()
     def __init__(self):
         pass
         #self.AppConfig.config['JSON_AS_ASCII'] = False

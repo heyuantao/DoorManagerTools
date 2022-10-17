@@ -1,7 +1,8 @@
 #-*- coding=utf-8 -*-
 from flask import render_template, request, session, jsonify
 from config import config
-from views.DoorManagerToolsView import version_view,dooropen_view
+from views.CallBackView import dooropenevent_callback_view
+from views.DisplayView import version_view
 
 ROUTER_PREFIX = config.AppConfig.ROUTE_PREFIX
 
@@ -9,12 +10,19 @@ class Route:
 
     def init_app(self, app=None, auth=None):
         @app.route(ROUTER_PREFIX + '/api/info/', methods=['GET','POST'])  # 获取文件信息，可以查看文件是否存在
-        def api_version_view():
+        def version_api():
             return version_view(request)
 
-        @app.route(ROUTER_PREFIX + '/api/dooropen/', methods=['GET','POST'])  # 获取文件信息，可以查看文件是否存在
-        def api_dooropen_view():
-            return dooropen_view(request)
+        
+
+        #该接口仅仅被智能网关调用
+        @app.route(ROUTER_PREFIX + '/api/callback/dooropenevent/', methods=['GET','POST'])  # 获取文件信息，可以查看文件是否存在
+        def dooropenevent_api():
+            return dooropenevent_callback_view(request)
+
+
+
+
 
         # ------------------------------------用于文件上传的接口---------------------------------#
         #@app.route(ROUTER_PREFIX+'/api/upload/', methods=['POST'])

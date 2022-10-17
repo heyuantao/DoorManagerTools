@@ -8,6 +8,8 @@ import redis
 import logging
 import json
 
+from utils.AppException import MessageException
+
 logger = logging.getLogger(__name__)
 
 #使用redis来存放各类数据
@@ -18,6 +20,39 @@ class Database:
         self.port = port
         self.db = db
 
+        ####定义redis的相关前缀###########
+        self.open_success_list_key = "success:"
+        self.open_failure_list_key = "failure:"
+        self.max_list_size = config.DBConfig.MAX_RECORD_SIZE
+
+        try:
+            logger.debug("Connect to redis ... in Database.__init__()")
+            self.connection_pool = redis.ConnectionPool(host=self.host, port=self.port, db=self.db, decode_responses=True) #password
+            self.connection = redis.StrictRedis(connection_pool=self.connection_pool)
+        except Exception as e:
+            msg_str = "Error in conncetion redis ! in Database.__init__()"
+            logger.error(msg_str)
+            raise MessageException(msg_str)
+
     #flask 初始化调用该函数
     def init_app(self,app=None):
         logger.debug("Init database in Database.__init__()")
+
+    #将一个开门成功记录存放在数据库中
+    def add_success_open_record(self,record):
+        list_key = self.open_success_list_key
+        self._trim_list_size()
+        return self.connection.lpush(list_key,json.dumps(record))
+
+    # 将一个开门失败记录存放在数据库中
+    def add_failure_open_record(self, record):
+        list_key = self.open_failure_list_key
+        self._trim_list_size()
+        return self.connection.lpush(list_key, json.dumps(record))
+
+    #控制数据库的长度
+    def _trim_list_size(self):
+        success_list_key = self.open_success_list_key
+        failure_list_key = self.open_failure_list_key
+        self.connection.ltrim(success_list_key,0,self.max_list_size)
+        self.connection.ltrim(failure_list_key, 0, self.max_list_size)
