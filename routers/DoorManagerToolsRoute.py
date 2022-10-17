@@ -9,6 +9,10 @@ ROUTER_PREFIX = config.AppConfig.ROUTE_PREFIX
 class Route:
 
     def init_app(self, app=None, auth=None):
+        @app.route(ROUTER_PREFIX + '/', methods=['GET'])  # 获取文件信息，可以查看文件是否存在
+        def main_api():
+            return version_view(request)
+
         @app.route(ROUTER_PREFIX + '/api/info/', methods=['GET'])  # 获取文件信息，可以查看文件是否存在
         def version_api():
             return version_view(request)
@@ -22,7 +26,7 @@ class Route:
             return failure_door_open_view(request)
 
         #该接口仅仅被智能网关调用
-        @app.route(ROUTER_PREFIX + '/api/callback/dooropenevent/', methods=['GET','POST'])  # 获取文件信息，可以查看文件是否存在
+        @app.route(ROUTER_PREFIX + '/api/callback/dooropenevent/', methods=['POST'])  # 获取文件信息，可以查看文件是否存在
         def door_open_event_callback_api():
             return dooropenevent_callback_view(request)
 
