@@ -2,7 +2,7 @@
 from flask import render_template, request, session, jsonify
 from config import config
 from views.CallBackView import dooropenevent_callback_view
-from views.DisplayView import version_view, sucess_door_open_view, failure_door_open_view
+from views.DisplayView import version_view, sucess_door_open_view, failure_door_open_view, status_view
 
 ROUTER_PREFIX = config.AppConfig.ROUTE_PREFIX
 
@@ -13,9 +13,9 @@ class Route:
         def main_api():
             return version_view(request)
 
-        @app.route(ROUTER_PREFIX + '/api/info/', methods=['GET'])  # 获取文件信息，可以查看文件是否存在
-        def version_api():
-            return version_view(request)
+        @app.route(ROUTER_PREFIX + '/api/status/', methods=['GET'])  # 获取文件信息，可以查看文件是否存在
+        def status_api():
+            return status_view(request)
 
         @app.route(ROUTER_PREFIX + '/api/success/', methods=['GET'])  #
         def success_open_api():

@@ -21,15 +21,18 @@ db = Database()
 def version_view(request):
     #print(request.args)
     return jsonify({"version":"1.0.0",\
-                    "callback":"/api/callback/dooropenevent/",\
-                    "success":"/api/success/",
-                    "failure":"/api/failure/"
-                    })
+                    "describe":"DoorManagerTools",\
+                    "status":"/api/status/",\
+                    "success":"/api/success/",\
+                    "failure":"/api/failure/",\
+                    "callback":"/api/callback/dooropenevent/"\
+            })
+
 
 
 def sucess_door_open_view(request):
     record_list = db.get_all_success_record()
-    print(record_list)
+    #print(record_list)
     #return jsonify(record_list)
     response = make_response(jsonify(record_list))
     response.headers['Content-Type'] = 'application/json;charset=UTF-8'
@@ -37,4 +40,13 @@ def sucess_door_open_view(request):
 
 def failure_door_open_view(request):
     record_list = db.get_all_failure_record()
-    return jsonify(record_list)
+    response = make_response(jsonify(record_list))
+    response.headers['Content-Type'] = 'application/json;charset=UTF-8'
+    return response
+
+def status_view(request):
+    success_count, failure_count = db.get_success_and_failure_count()
+    info_dict = {"success":success_count,"failure":failure_count}
+    response = make_response(jsonify(info_dict))
+    response.headers['Content-Type'] = 'application/json;charset=UTF-8'
+    return response

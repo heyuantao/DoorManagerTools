@@ -77,3 +77,10 @@ class Database:
             dict_item = json.loads(dict_item)
             dict_list.append(dict_item)
         return dict_list
+
+    def get_success_and_failure_count(self):
+        success_list_key = self.open_success_list_key
+        failure_list_key = self.open_failure_list_key
+        success_count = self.connection.llen(success_list_key)
+        failure_count = self.connection.llen(failure_list_key)
+        return (success_count,failure_count)
