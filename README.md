@@ -14,7 +14,7 @@ docker run -d --name redis --restart=always --network=host -v /app/DoorManagerTo
 ```
 然后运行应用
 ```
-docker run -d --name doormanagertools --restart=always --net=host -v /app/data/logs:/var/log/supervisor/doormanagertools:1.0 
+docker run -d --name doormanagertools --restart=always --net=host -v /app/data/logs:/var/log/supervisor/  doormanagertools:1.0 
 ```
 
 二、源代码方式安装和调试

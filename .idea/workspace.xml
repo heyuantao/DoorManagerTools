@@ -2,12 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c8e8a407-7302-4377-9e32-8f0287182cf0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/config.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker/nginx/default" beforeDir="false" afterPath="$PROJECT_DIR$/docker/nginx/default" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routers/DoorManagerToolsRoute.py" beforeDir="false" afterPath="$PROJECT_DIR$/routers/DoorManagerToolsRoute.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/DisplayView.py" beforeDir="false" afterPath="$PROJECT_DIR$/views/DisplayView.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker/supervisor/doormanagertools.conf" beforeDir="false" afterPath="$PROJECT_DIR$/docker/supervisor/doormanagertools.conf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -201,7 +199,7 @@
       <workItem from="1666002114756" duration="2267000" />
       <workItem from="1666014578366" duration="1019000" />
       <workItem from="1666075246210" duration="208000" />
-      <workItem from="1666099190769" duration="654000" />
+      <workItem from="1666099190769" duration="3252000" />
     </task>
     <servers />
   </component>
