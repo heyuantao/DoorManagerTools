@@ -9,7 +9,11 @@ ROUTER_PREFIX = config.AppConfig.ROUTE_PREFIX
 class Route:
 
     def init_app(self, app=None, auth=None):
-        @app.route(ROUTER_PREFIX + '/', methods=['GET'])  # 获取文件信息，可以查看文件是否存在
+        @app.route(ROUTER_PREFIX + '/api/', methods=['GET'])  # 获取文件信息，可以查看文件是否存在
+        def index():
+            return render_template('index.html')
+
+        @app.route(ROUTER_PREFIX + '/api/version/', methods=['GET'])  # 获取文件信息，可以查看文件是否存在
         def main_api():
             return version_view(request)
 

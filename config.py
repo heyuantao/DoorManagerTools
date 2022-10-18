@@ -6,7 +6,8 @@ import logging
 logger = logging.getLogger(__name__)
 
 class RedisConfigSettings:
-    HOST = "172.16.5.42"
+    #HOST = "172.16.5.42"
+    HOST = "127.0.0.1"
     MAX_RECORD_SIZE = 1000 #保存在redis中的最大记录长度
 
 class AppConfigSettings:
@@ -21,7 +22,7 @@ class AppConfigSettings:
     JSON_AS_ASCII = False
     JSONIFY_MIMETYPE= "application/json;charset=utf-8"
     #调试模式
-    DEBUG = True
+    DEBUG = False
 
 @Singleton
 class Config:

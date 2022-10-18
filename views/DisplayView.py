@@ -21,11 +21,7 @@ db = Database()
 def version_view(request):
     #print(request.args)
     return jsonify({"version":"1.0.0",\
-                    "describe":"DoorManagerTools",\
-                    "status":"/api/status/",\
-                    "success":"/api/success/",\
-                    "failure":"/api/failure/",\
-                    "callback":"/api/callback/dooropenevent/"\
+                    "describe":"DoorManagerTools"
             })
 
 
