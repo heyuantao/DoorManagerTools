@@ -3,9 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="c8e8a407-7302-4377-9e32-8f0287182cf0" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docker/supervisor/doormanagertools.conf" beforeDir="false" afterPath="$PROJECT_DIR$/docker/supervisor/doormanagertools.conf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -199,7 +197,7 @@
       <workItem from="1666002114756" duration="2267000" />
       <workItem from="1666014578366" duration="1019000" />
       <workItem from="1666075246210" duration="208000" />
-      <workItem from="1666099190769" duration="3252000" />
+      <workItem from="1666099190769" duration="3818000" />
     </task>
     <servers />
   </component>
